@@ -16,10 +16,10 @@
             android:name=".MainActivity04"
             android:exported="false" />
         <activity
-            android:name=".MainActivity05"
+            android:name=".MainActivity03"
             android:exported="false" />
         <activity
-            android:name=".MainActivity03"
+            android:name=".MainActivity02"
             android:exported="false" />
         <activity
             android:name=".MainActivity3"
@@ -34,7 +34,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity02"
+            android:name=".MainActivity05"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

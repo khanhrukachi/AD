@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,17 +27,13 @@ public class MainActivity04 extends AppCompatActivity {
         binding = ActivityMain04Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.inputNumber.addTextChangedListener(new TextWatcher() {
+        binding.btnDrawView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Do nothing
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
+            public void onClick(View v) {
+                String inputText = binding.inputNumber.getText().toString();
+                if (!inputText.isEmpty()) {
                     try {
-                        int value = Integer.parseInt(s.toString());
+                        int value = Integer.parseInt(inputText);
                         if (value > 0) {
                             generateViews(value);
                         } else {
@@ -50,11 +47,6 @@ public class MainActivity04 extends AppCompatActivity {
                 } else {
                     binding.viewContainer.removeAllViews();
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // Do nothing
             }
         });
     }

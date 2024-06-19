@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,17 +26,13 @@ public class MainActivity05 extends AppCompatActivity {
         binding = ActivityMain05Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.inputNumber.addTextChangedListener(new TextWatcher() {
+        binding.btnDrawView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Do nothing
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
+            public void onClick(View v) {
+                String inputText = binding.inputNumber.getText().toString();
+                if (!inputText.isEmpty()) {
                     try {
-                        int value = Integer.parseInt(s.toString());
+                        int value = Integer.parseInt(inputText);
                         if (value > 0) {
                             generateViews(value);
                         } else {
@@ -49,11 +46,6 @@ public class MainActivity05 extends AppCompatActivity {
                 } else {
                     binding.viewContainer.removeAllViews();
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // Do nothing
             }
         });
     }
@@ -80,6 +72,7 @@ public class MainActivity05 extends AppCompatActivity {
                     textView1.setText(String.valueOf(value1));
                     textView1.setBackgroundColor(value1 % 2 == 0 ? Color.BLUE : Color.GRAY);
                     textView1.setTextColor(Color.WHITE);
+                    textView1.setTextSize(26);
                     textView1.setGravity(Gravity.CENTER);  // Center text
                     LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 2);
                     params1.setMargins(10, 10, 10, 10);  // Add margins
@@ -91,6 +84,7 @@ public class MainActivity05 extends AppCompatActivity {
                     textView2.setText(String.valueOf(value2));
                     textView2.setBackgroundColor(value2 % 2 == 0 ? Color.BLUE : Color.GRAY);
                     textView2.setTextColor(Color.WHITE);
+                    textView2.setTextSize(26);
                     textView2.setGravity(Gravity.CENTER);  // Center text
                     LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
                     params2.setMargins(10, 10, 10, 10);  // Add margins
