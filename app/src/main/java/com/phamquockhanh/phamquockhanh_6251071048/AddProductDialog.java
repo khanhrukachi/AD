@@ -22,8 +22,8 @@ import com.phamquockhanh.phamquockhanh_6251071048.model.Product;
 public class AddProductDialog extends Dialog {
 
     private ActivityAddProductDialogBinding binding;
-    private ProductDAO productDAO;
-    private ProductAdapter adapter;
+    private final ProductDAO productDAO;
+    private final ProductAdapter adapter;
 
     public AddProductDialog(Context context, ProductDAO productDAO, ProductAdapter adapter) {
         super(context);
@@ -77,7 +77,7 @@ public class AddProductDialog extends Dialog {
 
         binding.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 dismiss();
             }
         });
